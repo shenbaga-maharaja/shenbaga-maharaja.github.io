@@ -930,6 +930,14 @@ span {
     margin-bottom: 3rem;
 }
 
+.contact .contact-details {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
 .contact form {
     max-width: 70rem;
     margin: 1rem auto;
