@@ -555,7 +555,7 @@
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span></h2>
 
-        <form action="mailto:shenbagamaharaja.a@gmail.com" method="POST">
+        <form id="emailForm">
             <input type="hidden" name="access_key" value="46bb3fe9-0398-4403-81a9-49503f8b3a60" />
             <div class="input-card">
                 <input type="text" name="name" placeholder="Enter Your Name" autocomplete="off" required />
@@ -591,5 +591,53 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
 
     <script src="index.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        document.getElementById("emailForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            var formData = new FormData(this); // Get form data
+
+            // Send form data via AJAX
+            fetch("sendEmail.php", {
+                method: "POST",
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Show success message with SweetAlert
+                        Swal.fire({
+                            title: 'Thank You!',
+                            text: 'Your message has been successfully sent. We\'ll get back to you shortly.',
+                            icon: 'success',
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            timer: 3000 // Close alert after 3 seconds
+                        });
+
+                        // Optionally reset form fields
+                        document.getElementById("emailForm").reset();
+                    } else {
+                        // Show error message with SweetAlert
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Failed to send email. Please try again later.',
+                            icon: 'error',
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            timer: 3000 // Close alert after 3 seconds
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
+
+    
 </body>
 </html>
