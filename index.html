@@ -555,21 +555,15 @@
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span></h2>
 
-        <form id="emailForm">
-            <input type="hidden" name="access_key" value="46bb3fe9-0398-4403-81a9-49503f8b3a60" />
-            <div class="input-card">
-                <input type="text" name="name" placeholder="Enter Your Name" autocomplete="off" required />
-                <input type="email" name="email" placeholder="Enter Your Mail Id" autocomplete="off" required />
+        <div class="contact-details">
+            <div class="socila-media-profile">
+                <a href="https://www.linkedin.com/in/shenbaga-maharaja"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/shenbaga-maharaja"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:shenbagamaharaja.a@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
-
-            <div class="input-card">
-                <input type="number" name="number" placeholder="Enter Your Mobile Number" autocomplete="off" required />
-                <input type="text" name="subject" placeholder="Enter Subject Of The Mail" autocomplete="off" required />
-            </div>
-
-            <textarea name="message" cols="30" rows="10" placeholder="Enter Your Message Here..." autocomplete="off"></textarea>
-            <button type="submit" class="button">Submit</button>
-        </form>
+            <a href="#" onclick="cvDownload()" class="button">Download Resume<i class="fa-solid fa-download"></i></a>
+        </div>
+        
     </section>
 
     <footer class="footer">
@@ -591,54 +585,6 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
 
     <script src="index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-    <script>
-        document.getElementById("emailForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent the form from submitting normally
-
-            var formData = new FormData(this); // Get form data
-
-            // Send form data via AJAX
-            fetch("sendEmail.php", {
-                method: "POST",
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Show success message with SweetAlert
-                        Swal.fire({
-                            title: 'Thank You!',
-                            text: 'Your message has been successfully sent. We\'ll get back to you shortly.',
-                            icon: 'success',
-                            showCancelButton: false,
-                            showConfirmButton: false,
-                            timer: 3000 // Close alert after 3 seconds
-                        });
-
-                        // Optionally reset form fields
-                        document.getElementById("emailForm").reset();
-                    } else {
-                        // Show error message with SweetAlert
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'Failed to send email. Please try again later.',
-                            icon: 'error',
-                            showCancelButton: false,
-                            showConfirmButton: false,
-                            timer: 3000 // Close alert after 3 seconds
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                });
-        });
-    </script>
-
     
 </body>
 </html>
