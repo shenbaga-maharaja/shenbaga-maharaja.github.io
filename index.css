@@ -58,6 +58,10 @@ section {
     padding: 10rem 2rem;
 }
 
+.heading {
+    margin-top: 3rem!important;
+}
+
 .header {
     display: flex;
     flex-direction: row;
