@@ -80,8 +80,9 @@ function cvDownload() {
 // Define the start date
 //var startDate = new Date('January 15, 2024'); // output 0.3 year
 
-var startDate = new Date(2023, 7, 26);
+//var startDate = new Date(2023, 7, 26);
 // output 0.4 year
+var startDate = new Date(2023, 5, 1);
 
 // Extract day, month, and year from the start date
 var d1 = startDate.getDate();
